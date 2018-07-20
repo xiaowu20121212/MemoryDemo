@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_stop" />
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop"
+        app:layout_constraintLeft_toRightOf="@+id/btn_start"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btn_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Network"
+        app:layout_constraintBottom_toTopOf="@+id/btn_write"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Write"
+        app:layout_constraintBottom_toTopOf="@+id/btn_slow"
+        app:layout_constraintTop_toBottomOf="@+id/btn_network" />
+
+    <Button
+        android:id="@+id/btn_slow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="slow method"
+        app:layout_constraintBottom_toTopOf="@+id/btn_leak"
+        app:layout_constraintTop_toBottomOf="@+id/btn_write" />
+
+    <Button
+        android:id="@+id/btn_leak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="leak"
+        app:layout_constraintBottom_toTopOf="@+id/btn_closable"
+        app:layout_constraintTop_toBottomOf="@+id/btn_slow" />
+
+    <Button
+        android:id="@+id/btn_closable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="closable"
+        app:layout_constraintBottom_toTopOf="@+id/btn_instance"
+        app:layout_constraintTop_toBottomOf="@+id/btn_leak" />
+
+    <Button
+        android:id="@+id/btn_instance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="instance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_closable" />
+</android.support.constraint.ConstraintLayout>

@@ -31,7 +31,10 @@ public class MainActivity extends AppCompatActivity{
 
     private void init() {
         mData.add(new Bean("SysTrace Text", RecycleViewActivity.class));
-        mData.add(new Bean("Hierrarchy View Test", HierarchyViewActivity.class));
+        mData.add(new Bean("Hierarchy View Test", HierarchyViewActivity.class));
+        mData.add(new Bean("Block Canary Test", BlockCanaryTest.class));
+        mData.add(new Bean("Strict Mode Test", StrictModeTest.class));
+        mData.add(new Bean("内存泄漏测试，LeakCanary", LeakCanaryTest.class));
     }
 
     private class MainAdapter extends RecyclerView.Adapter<MainActivity.MainViewHolder>{

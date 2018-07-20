@@ -3,6 +3,8 @@ package com.example.yuanzhiwu.memorydemo;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.os.SystemClock;
 import android.os.Trace;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -68,12 +70,16 @@ public class RecycleViewActivity extends Activity {
         }
         void freshData(String s) {
             int j = 0;
+            long startTime = SystemClock.uptimeMillis();
             String input = mInput.getText().toString();
             for(int i = 0; i < Math.random() * (TextUtils.isEmpty(input) ? 1: Integer.parseInt(input)) ; i++) {
                 j = i;
             }
-            ((TextView) itemView.findViewById(R.id.tv_number)).setText(String.format("position: %s  random: %s", s, String.valueOf(j)));
-
+            long cost = SystemClock.uptimeMillis() - startTime;
+            ((TextView) itemView.findViewById(R.id.tv_number)).setText(String.format("position: %s  random: %s  duration: %s", s, String.valueOf(j), String.valueOf(cost)));
+            if (cost > 16) {
+                StrictMode.noteSlowCall("slowCall cost=" + cost);
+            }
         }
     }
 }

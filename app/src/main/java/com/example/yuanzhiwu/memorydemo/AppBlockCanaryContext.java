@@ -12,7 +12,7 @@ public class AppBlockCanaryContext extends BlockCanaryContext {
     // if set true, notification will be shown, else only write log file
     @Override
     public boolean isNeedDisplay() {
-        return BuildConfig.DEBUG;
+        return true;
     }
     // path to save log file (在SD卡目录下)
     @Override
