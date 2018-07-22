@@ -2,6 +2,7 @@ package com.example.yuanzhiwu.memorydemo;
 
 import android.app.Application;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.github.moduth.blockcanary.BlockCanary;
 import com.squareup.leakcanary.DefaultLeakDirectoryProvider;
@@ -19,7 +20,11 @@ public class LeakCheckApp extends Application {
         super.onCreate();
         //startLeakCheck(true);
         //startStrictMode(true);
+        Duration.setStart("installBlockCh");
         installBlockCh();
+        Log.d("Duration",
+                "installBlockCh called Time:"
+                        + Duration.getDuration("installBlockCh"));
     }
 
     /**
@@ -80,14 +85,12 @@ public class LeakCheckApp extends Application {
     }
 
     boolean mIsBlockStart;
-
     public void startBlock() {
         if (mBlockCanary != null && !mIsBlockStart) {
             mBlockCanary.start();
             mIsBlockStart = true;
         }
     }
-
     public void stopBlock() {
         if (mBlockCanary != null && mIsBlockStart) {
             mBlockCanary.stop();

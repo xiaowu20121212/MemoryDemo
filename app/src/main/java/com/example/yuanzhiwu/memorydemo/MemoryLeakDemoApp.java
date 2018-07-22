@@ -1,5 +1,7 @@
 package com.example.yuanzhiwu.memorydemo;
 
+import android.os.Debug;
+
 /**
  * Created by yuanzhiwu on 18-7-16.
  */
@@ -7,7 +9,12 @@ package com.example.yuanzhiwu.memorydemo;
 public class MemoryLeakDemoApp extends LeakCheckApp {
     @Override
     public void onCreate() {
+        Debug.startMethodTracing("onCreate.trace");
         super.onCreate();
+        StringBuilder stringBuilder = new StringBuilder();
+       for (int i = 0;i < 10000; i++) {
+           stringBuilder.append(String.valueOf(i));
+       }
     }
 
     @Override

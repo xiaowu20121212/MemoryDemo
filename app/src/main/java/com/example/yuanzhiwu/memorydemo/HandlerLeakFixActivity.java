@@ -11,7 +11,6 @@ import java.lang.ref.WeakReference;
 public class HandlerLeakFixActivity extends LeakActivity {
 
     private Handler mHandler = new MyHandler(this);
-
     private static class MyHandler extends Handler {
 
         private WeakReference<Context> reference;

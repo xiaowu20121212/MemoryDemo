@@ -13,7 +13,6 @@ public class StaticInnerClassLeakActivity extends LeakActivity {
     private static final String TAG = "Leak";
 
     private static InnerClassManager innerClassManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +20,6 @@ public class StaticInnerClassLeakActivity extends LeakActivity {
         innerClassManager = new InnerClassManager();
         innerClassManager.doSomeThing();
     }
-
     private class InnerClassManager {
         void doSomeThing() {
             Log.d(TAG, "doSomeThing: ");

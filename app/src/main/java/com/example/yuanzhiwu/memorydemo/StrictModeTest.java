@@ -22,7 +22,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.Permission;
 import java.util.ArrayList;
 
 public class StrictModeTest extends Activity implements View.OnClickListener {
@@ -178,4 +177,36 @@ public class StrictModeTest extends Activity implements View.OnClickListener {
 
         }
     }
+
+    public void testOutStream() {
+        int checkSelfPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkSelfPermission == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+            return;
+        }
+        File externalStorage = Environment.getExternalStorageDirectory();
+        File mbFile = new File(externalStorage, "strict.txt");
+        OutputStream output = null;
+        try {
+            if (!mbFile.exists()) {
+                mbFile.createNewFile();
+            }
+            output= new FileOutputStream(mbFile, true);
+            output.write("yuanzhiwu test strict mode".getBytes());
+            output.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if (output != null) {
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }

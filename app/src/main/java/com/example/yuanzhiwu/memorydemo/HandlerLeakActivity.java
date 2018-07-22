@@ -16,20 +16,10 @@ public class HandlerLeakActivity extends LeakActivity {
             doHandleTheMessage(msg);
         }
     };
-
-    private static void doHandleTheMessage(Message msg) {
-        try {
-            Thread.sleep(200);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     private void loadData(){
         //模拟数据处理和消息发送
         loadData(3);
     }
-
     private void loadData(int count){
         //...request
         for(int i=0;i<count;i++) {
@@ -49,4 +39,20 @@ public class HandlerLeakActivity extends LeakActivity {
         loadData();
     }
 
+    private static void doHandleTheMessage(Message msg) {
+        try {
+            Thread.sleep(200);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+            mHandler = null;
+        }
+    }
 }

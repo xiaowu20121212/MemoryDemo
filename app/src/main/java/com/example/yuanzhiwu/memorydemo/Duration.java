@@ -1,12 +1,6 @@
 package com.example.yuanzhiwu.memorydemo;
 
 import java.util.HashMap;
-
-/**
- * ���ڼ�������������ʱ��
- * @author yangguanxiang
- *
- */
 public class Duration {
 	private static final boolean DEBUG = false;
 	public static HashMap<String, Duration> sMap = new HashMap<String, Duration>();

@@ -13,8 +13,6 @@ public class ThreadLeakActivity extends LeakActivity {
         setContentView(R.layout.activity_thread_leak);
         doSomeThing();
     }
-
-
     private void doSomeThing() {
         new Thread(new Runnable() {
             @Override

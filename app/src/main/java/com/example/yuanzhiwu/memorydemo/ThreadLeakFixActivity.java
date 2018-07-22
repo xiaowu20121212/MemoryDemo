@@ -16,15 +16,12 @@ public class ThreadLeakFixActivity extends LeakActivity {
     }
 
     private Thread mThread;
-
     private void doSomeThing() {
         mThread = new Thread(new MyRunnable(this));
         mThread.start();
     }
-
     static class MyRunnable implements Runnable{
         WeakReference<Activity> wkActivity;
-
         MyRunnable(Activity activity) {
             wkActivity = new WeakReference<Activity>(activity);
         }
@@ -37,7 +34,6 @@ public class ThreadLeakFixActivity extends LeakActivity {
             }
         }
     }
-
     private static void doUseActivity(Activity activity) {
     }
 
